@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
+import {PokemonDataService} from "../pokemon-data-service.service";
 
 @Component({
   selector: 'app-my-component',
@@ -11,9 +12,9 @@ export class MyComponentComponent {
   id: string = '';
   pokemons: Pokemon[] = [];
   searchString: string = '';
-  selectedPokemonId: number | null = null;
+  selectedPokemonId: number=0;
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, private pokemonDataService: PokemonDataService) { }
 
   ngOnInit() {
     this.pokemonService.getPokemonList().subscribe((response) => {
@@ -34,6 +35,10 @@ export class MyComponentComponent {
     } else if (this.searchString) {
       console.log('Le dresseur a recherché le pokémon avec le nom ' + this.searchString);
     }
+  }
+
+  searchPokemonById() {
+    this.pokemonDataService.setPokemonId(this.selectedPokemonId);
   }
 
 

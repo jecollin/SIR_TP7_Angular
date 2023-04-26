@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
+import {PokemonDataService} from "../pokemon-data-service.service";
 
 
 @Component({
@@ -18,11 +19,18 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
-    private location: Location
+    private location: Location,
+    private pokemonDataService: PokemonDataService
   ) {}
 
-  ngOnInit(): void {
-    this.getPokemon();
+  ngOnInit() {
+    this.pokemonDataService.getPokemonId().subscribe(pokemonId => {
+      if (pokemonId !== 0) {
+        this.pokemonService.getPokemonById(pokemonId).subscribe(pokemon => {
+          this.pokemon = pokemon;
+        });
+      }
+    });
   }
 
   getPokemon(): void {

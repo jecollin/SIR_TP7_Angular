@@ -7,6 +7,7 @@ import { MyComponentComponent } from './my-component/my-component.component';
 import { FilterPokemonPipe } from './filter-pokemon--pipe.pipe';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
+import {PokemonDataService} from "./pokemon-data-service.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     NoopAnimationsModule
   ],
   providers: [
-    FilterPokemonPipe
+    FilterPokemonPipe,
+    PokemonDataService
   ],
   bootstrap: [AppComponent]
 })
