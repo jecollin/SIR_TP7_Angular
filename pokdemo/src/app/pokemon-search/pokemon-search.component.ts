@@ -5,10 +5,10 @@ import {PokemonDataService} from "../pokemon-data-service.service";
 
 @Component({
   selector: 'app-my-component',
-  templateUrl: './my-component.component.html',
-  styleUrls: ['./my-component.component.css']
+  templateUrl: './pokemon-search.component.html',
+  styleUrls: ['./pokemon-search.component.css']
 })
-export class MyComponentComponent {
+export class PokemonSearchComponent {
   id: string = '';
   pokemons: Pokemon[] = [];
   searchString: string = '';
