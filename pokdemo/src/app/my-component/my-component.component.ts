@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
 
-
 @Component({
   selector: 'app-my-component',
   templateUrl: './my-component.component.html',
@@ -17,12 +16,17 @@ export class MyComponentComponent {
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.pokemons = [
+    this.pokemonService.getPokemonList().subscribe((response) => {
+      this.pokemons = response.results;
+    });
+    /*this.pokemons = [
       { id: 1, name: 'Bulbasaur' },
       { id: 2, name: 'Charmander' },
       { id: 3, name: 'Squirtle' },
       { id: 4, name: 'Pikachu' }
     ];
+    */
+
   }
   searchPokemon() {
     if (this.selectedPokemonId) {
