@@ -5,9 +5,11 @@
 <p>L'id saisi est : {{ id }}</p>
 <br>
 <br>
-<div *ngFor="let pokemon of pokemons">
-  <p>{{ pokemon.id }} - {{ pokemon.name }}</p>
+<div>
+  <label for="pokemon-select">Sélectionnez un Pokémon : </label>
+  <select id="pokemon-select">
+    <option *ngFor="let pokemon of pokemons" [value]="pokemon.id">{{ pokemon.name }}</option>
+  </select>
 </div>
-
 
 
