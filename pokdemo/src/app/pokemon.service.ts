@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,10 @@ export class PokemonService {
 
   getPokemonById(id: number) {
     return this.http.get(`${this.baseUrl}pokemon/${id}`);
+  }
+
+  getPokemonList(): Observable<any> {
+    const url = `${this.baseUrl}pokedex/1`;
+    return this.http.get<any>(url);
   }
 }
