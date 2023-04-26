@@ -8,6 +8,7 @@ export class Pokemon {
     this.name = name;
     this.stats = stats;
   }
+
 }
 
 export interface Stat {
