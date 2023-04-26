@@ -3,6 +3,11 @@
 <input type="text" [(ngModel)]="id" id="idInput">
 <input type="text" [value]="id" readonly id="idReadOnlyInput">
 <p>L'id saisi est : {{ id }}</p>
+<br>
+<br>
+<div *ngFor="let pokemon of pokemons">
+  <p>{{ pokemon.id }} - {{ pokemon.name }}</p>
+</div>
 
 
 
