@@ -4,17 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MyComponentComponent } from './my-component/my-component.component';
+import { FilterPokemonPipe } from './filter-pokemon--pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponentComponent
+    MyComponentComponent,
+    FilterPokemonPipe
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    FilterPokemonPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

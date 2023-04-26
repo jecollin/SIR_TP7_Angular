@@ -9,7 +9,7 @@ import { Pokemon } from '../pokemon';
 export class MyComponentComponent {
   id: string = '';
   pokemons: Pokemon[] = [];
-  search: string = '';
+  searchString: string = '';
   selectedPokemonId: number | null = null;
 
   constructor() { }

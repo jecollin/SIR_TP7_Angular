@@ -14,8 +14,13 @@
 
 <select [(ngModel)]="selectedPokemonId">
   <option value="">-- Sélectionner un Pokémon --</option>
-  <option *ngFor="let pokemon of pokemons" [value]="pokemon.id">{{ pokemon.name }}</option>
+  <option *ngFor="let pokemon of pokemons | filterPokemonPipe: 'name': searchString" [value]="pokemon.id">{{ pokemon.name }}</option>
 </select>
+
+
+<label for="search-input">Rechercher un Pokémon :</label>
+<input type="text" id="search-input" [(ngModel)]="searchString">
+
 
 
 
