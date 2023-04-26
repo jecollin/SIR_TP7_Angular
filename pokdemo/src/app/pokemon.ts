@@ -1,9 +1,16 @@
 export class Pokemon {
-  id: number=0;
-  name: string='';
-  height: number=0;
-  weight: number=0;
-  types: string[]=[];
-  imageUrl: string='';
+  id: number;
+  name: string;
+  stats: Stat[];
 
+  constructor(id: number, name: string, stats: Stat[]) {
+    this.id = id;
+    this.name = name;
+    this.stats = stats;
+  }
+}
+
+export interface Stat {
+  name: string;
+  value: number;
 }

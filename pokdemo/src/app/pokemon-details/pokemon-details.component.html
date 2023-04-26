@@ -1,0 +1,9 @@
+<div *ngIf="pokemon">
+  <h2>{{pokemon.name}}</h2>
+  <div>ID: {{pokemon.id}}</div>
+  <div>Stats:</div>
+  <ul>
+    <li *ngFor="let stat of pokemon.stats">{{ stat.name }}: {{ stat.value }}</li>
+  </ul>
+  <button (click)="goBack()">Back</button>
+</div>

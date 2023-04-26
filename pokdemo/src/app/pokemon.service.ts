@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {catchError, Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon } from './pokemon';
 
@@ -16,8 +16,19 @@ export class PokemonService {
     return this.http.get(`${this.baseUrl}pokedex/1`);
   }
 
-  getPokemonById(id: number) {
-    return this.http.get(`${this.baseUrl}pokemon/${id}`);
+  getPokemonById(id: number): Observable<Pokemon> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Pokemon>(url).pipe(
+      catchError(this.handleError<Pokemon>(`getPokemonById id=${id}`))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 
   getPokemonList(): Observable<any> {
@@ -29,13 +40,16 @@ export class PokemonService {
     const url = `${this.baseUrl}/pokemon/${id}`;
     return this.http.get(url).pipe(
       map((response: any) => {
-        const pokemon = new Pokemon();
-        pokemon.id = response.id;
-        pokemon.name = response.name;
-        pokemon.height = response.height;
-        pokemon.weight = response.weight;
-        pokemon.types = response.types.map((type: any) => type.type.name);
-        pokemon.imageUrl = response.sprites.front_default;
+        const pokemon: Pokemon = {
+          id: response.id,
+          name: response.name,
+          stats: response.stats.map((stat: any) => {
+            return {
+              name: stat.stat.name,
+              value: stat.base_stat
+            };
+          })
+        };
         return pokemon;
       })
     );
