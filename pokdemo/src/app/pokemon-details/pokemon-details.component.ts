@@ -22,8 +22,15 @@ export class PokemonDetailsComponent implements OnInit {
     private location: Location,
     private pokemonDataService: PokemonDataService
   ) {}
-
   ngOnInit() {
+    this.pokemonDataService.selectedPokemon$.subscribe(pokemon => {
+      if (pokemon) {
+        this.pokemonService.getPokemonById(pokemon.id).subscribe(pokemon => {
+          this.pokemon = pokemon;
+        });
+      }
+    });
+
     this.pokemonDataService.getPokemonId().subscribe(pokemonId => {
       if (pokemonId !== 0) {
         this.pokemonService.getPokemonById(pokemonId).subscribe(pokemon => {
