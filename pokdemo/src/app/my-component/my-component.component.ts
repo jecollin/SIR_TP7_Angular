@@ -22,5 +22,13 @@ export class MyComponentComponent {
       { id: 4, name: 'Pikachu' }
     ];
   }
+  searchPokemon() {
+    if (this.selectedPokemonId) {
+      console.log('Le dresseur a choisi le pokémon avec l\'ID ' + this.selectedPokemonId);
+    } else if (this.searchString) {
+      console.log('Le dresseur a recherché le pokémon avec le nom ' + this.searchString);
+    }
+  }
+
 
 }
