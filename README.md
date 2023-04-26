@@ -151,7 +151,21 @@ Créer un deuxième champs input en mode readonly et lié les deux par un id.  A
 
 ### Q3bis :
 
-comprendre pourquoi il devient difficile de faire une attaque XSS sur une application angular
+comprendre pourquoi il devient difficile de faire une attaque XSS sur une application angular :
+
+Réponse : Il devient difficile de faire une attaque XSS (Cross-Site Scripting) sur une application Angular car Angular a été conçu pour protéger les applications web contre les attaques XSS.
+
+Angular utilise une approche basée sur la séparation des préoccupations (Separation of Concerns) pour gérer l'interaction avec le DOM. Cette approche repose sur le principe que le code de la 
+logique applicative et celui de la manipulation du DOM doivent être séparés.
+
+Angular utilise également un système de templates qui permet de générer automatiquement des vues à partir des modèles de données. Les templates Angular sont écrits en HTML avec des balises 
+personnalisées qui permettent de définir des directives et des bindings de données. Cela permet à Angular de contrôler la façon dont les données sont affichées et d'appliquer des règles de sécurité pour éviter les attaques XSS.
+
+En outre, Angular utilise également une technique appelée "sanitization" qui consiste à nettoyer les données d'entrée avant de les afficher. Cela permet d'éviter les attaques XSS en supprimant 
+tout code malveillant qui pourrait être injecté dans les données d'entrée.
+
+En résumé, Angular fournit plusieurs fonctionnalités de sécurité qui permettent de protéger les applications web contre les attaques XSS. Ces fonctionnalités comprennent la séparation des 
+préoccupations, les templates sécurisés et la "sanitization" des données d'entrée.
 
 [lien](https://vitalflux.com/angular-prevent-xss-attacks-code-examples/)
 

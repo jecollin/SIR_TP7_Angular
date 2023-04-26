@@ -1,6 +1,8 @@
 <p>my-component works!</p>
 <label>Entrez l'id recherché :</label>
 <input type="text" [(ngModel)]="id" id="idInput">
+<input type="text" [value]="id" readonly id="idReadOnlyInput">
 <p>L'id saisi est : {{ id }}</p>
+
 
 
