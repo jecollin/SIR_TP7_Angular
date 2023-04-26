@@ -8,14 +8,19 @@ import { Pokemon } from '../pokemon';
 })
 export class MyComponentComponent {
   id: string = '';
+  pokemons: Pokemon[] = [];
+  search: string = '';
+  selectedPokemonId: number | null = null;
 
-  pokemons: Pokemon[] = [
-    { id: 1, name: 'Bulbasaur' },
-    { id: 2, name: 'Charmander' },
-    { id: 3, name: 'Squirtle' },
-    { id: 4, name: 'Pikachu' },
-    { id: 5, name: 'Eevee' }
-  ];
   constructor() { }
+
+  ngOnInit() {
+    this.pokemons = [
+      { id: 1, name: 'Bulbasaur' },
+      { id: 2, name: 'Charmander' },
+      { id: 3, name: 'Squirtle' },
+      { id: 4, name: 'Pikachu' }
+    ];
+  }
 
 }
